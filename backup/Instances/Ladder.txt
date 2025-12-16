@@ -1,0 +1,34 @@
+<!Logo Code!>  to rect :a :b 
+repeat 2 [fd :a  rt 90 fd :b rt 90 ]
+end
+
+
+to tri :b
+rt 30
+repeat 3 [fd :b rt 120]
+lt 30
+end
+
+to step :a :b
+rect :a :b
+fd :a
+down 90
+tri :b
+up 90
+rl 60
+end
+
+to ladder :a :b :e
+repeat :e [step :a :b ]
+end
+
+ cg ladder 20 50 4 
+
+
+<!Scene State !>
+ functions: { ladder 20 50 4 }
+cameraPos: {166.01299491319145 123.02822279076953 94.74654760984727}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {ladder} values: {20,50,4,}min-max-step {10,40,1}min-max-step {25,100,1}min-max-step {2,8,1}<!Notes !>
+{ }

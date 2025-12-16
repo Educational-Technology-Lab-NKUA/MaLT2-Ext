@@ -1,0 +1,24 @@
+#
+# Wavefront material file: d:\documents and settings\filip\desktop\turtle.mtl
+#
+# Converted by the PolyTrans geometry converter from Okino Computer Graphics, Inc.
+# Date/time of export: 09/22/2008 12:07:49
+#
+# Bounding box of geometry = (-0.95,-0.7,-1.54062) to (1,0.7,0.975).
+
+newmtl default
+	Ns 32
+	d 1
+	illum 2
+	Kd 0.4 0.4 0.4
+	Ks 0.7 0.7 0.7
+	Ka 0.3 0.3 0.3
+
+newmtl default_1
+	Ns 31
+	d 1
+	illum 2
+	Kd 0.4 0.4 0.4
+	Ks 0.69 0.69 0.69
+	Ka 0.298039 0.298039 0.298039
+

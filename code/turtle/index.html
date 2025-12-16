@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>MaLT+ v.2.0</title>
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="css/papert.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" href="codemirror/cm/logo.css">
+	<link rel="stylesheet" href="codemirror/codemirror-4.0/lib/codemirror.css">
+	<link href="jquerySpliter/css/jquery.splitter.css" rel="stylesheet"/>
+	<script src="codemirror/codemirror-4.0/lib/codemirror.js"></script>
+	<script src="codemirror/cm/logo.js"></script>
+    <script src="codemirror/codemirror-4.0/addon/edit/matchbrackets.js"></script>
+	<script src="codemirror/codemirror-4.0/addon/edit/closebrackets.js"></script>
+	<script src="codemirror/codemirror-4.0/addon/display/placeholder.js"></script>
+	<script src="jquery-ui-1.10.4.custom/jquery-1.8.0.js"></script>
+	<script src="js/three.min.js"></script><!-- Three.js v 50 -->
+	<script src="js/GridHelper.js"></script>
+	<script src="js/loaders/OBJLoader.js"></script>
+	<script type="text/javascript" src="js/3dturtle.js"></script>
+	<script type="text/javascript" src="js/parser.js"></script>
+	<script type="text/javascript" src="js/logo.js"></script>
+    <script type="text/javascript" src="js/language.js"></script>
+    <script type="text/javascript" src="js/states.js"></script>
+	<link rel="stylesheet" href="jquery-ui-1.10.4.custom/development-bundle/themes/base/jquery.ui.all.css">
+	<script src="jquery-ui-1.10.4.custom/development-bundle/jquery-1.10.2.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.core.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.widget.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.mouse.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.slider.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.draggable.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.resizable.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.core.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.widget.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.position.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.tooltip.js"></script>
+	<script src="jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.menu.js"></script>
+	<script src="jquerySpliter/js/jquery.splitter-0.14.0.js"></script>
+	<script src="jquery-ui-1.10.4.custom/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/sliders.js" type="text/javascript"></script>
+	<script src="init.js" type="text/javascript"></script>
+     <link type="text/css" rel="stylesheet" href="jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
+
+<script type="text/javascript" src="jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js" charset="utf-8"></script>
+
+	<style>
+.ui-menu {
+	width: 150px;
+}
+label {
+	display: inline-block;
+	width: 5em;
+}
+    </style>
+</head>
+	<body onload="init('3Dcanvas','turtle','input','oldcode', 'textOutput');" onresize="resize_scene();"   >
+    <div id = "container" class = "container">
+    <input id = "lang" type="image"   onClick="changeLanguage();" src = "icons/english.png" value="Language"title="Language" />
+       <div id="sidebar"  style="">
+       <!-- Hello <?php echo $learner_id ?>-->
+      <ul>
+    <li> <input id="reset"type = "image" title = "Επαναφορά των παραθύρων της σελίδας στις αρχικές τους θέσεις και διαστάσεις" onclick="initializeObjects();" src = "icons/cubes.png" onmousedown = "src='icons/cubesClick.png';"onmouseup="src='icons/cubes.png'"  width="35px" height="35px"  /> </li>
+   <p></p>
+    <li >  <input id="notepad" type = "image"  title = "Σημειώσεις" onclick="appearNotes();" onmousedown = "src='icons/pencilClick.png';"onmouseup="src='icons/pencil.png'"  src = "icons/pencil.png" width="35px" height="35px"style = "z-index:100; " />
+    </li>
+    </ul>
+    </div>
+      <div id="notes">
+      <div id="grabBar" style="text-align:center;"class ="grabBar" > <span id="notesHead" style="text-align:center;"> Σημειωματάριο </span>
+      <input id ="min" type="image" title="Ελαχιστοποίηση"src = "icons/minimize.png" onClick="minimizeNotes();" value="minmize" width="15px" height="15px" style="margin-left:70%"/>
+      </div>
+      <textarea id="noteText" > </textarea>
+
+
+      </div>
+      <div id="mainCanvas">
+        <div id="grabBar" style="height: 3%; cursor:default;"class ="grabBar" >
+          <input id="cleanButton" type="image" title="Καθαρισμός των γραφικών και επαναφορά της χελώνας στο σημείο 0,0,0."src = "icons/eraser1.png"onmousedown = "src='icons/eraser.png';"onmouseup="src='icons/eraser1.png'" onClick="resetCanvas(1);" value="reset scene" style = "width:18px; height: 18px; " />
+          <input id = "find" type="image" title="Βρες τον χαρακτήρα μου" style = "width:18px; height: 18px; "onmousedown = "src='icons/find.png';"onmouseup="src='icons/find.png'" onClick=" camera.position = new THREE.Vector3(camera.position.x, camera.position.y, parameters.CAMERA_DISTANCE).addSelf(myTurtle.position);" src = "icons/find.png"  />
+             <input id = "axisIcon" type="image" title="Εμφάνιση βοηθητικών αξόνων" style="width:18px; height: 18px;" onClick="axisControl();" src = "icons/axisicon.png" onmousedown = "src='icons/axonesClick.png';"onmouseup="src='icons/axisicon.png'" value="Show Axis" />
+     <ul class="main-nav">
+      <li class="dropdown">
+        <a href="#" id="help">Βοήθεια  <img   src="icons/help.png" alt="help" style="width:18px;height:18px;vertical-align:middle; "></a>
+        <ul class="drop-nav">
+          <li><a href="http://etl.ppp.uoa.gr/malt2/Manuals/Entoles_Malt.pdf" target="_blank" id="LogoCommands"> Εντολές Logo </a></li>
+          <li><a href="http://etl.ppp.uoa.gr/malt2/Manuals/Mini_Malt_Tutorial.pdf" target="_blank" id="manual" > Εγχειρίδιο </a></li>
+          <li class="flyout">
+            <a href="#" id="examples"> Παραδείγματα </a>
+            <ul class="flyout-nav">
+              <li><a href="http://etl.ppp.uoa.gr/malt2/?DnaInstance " id="ex1"> Έλικα DNA </a></li>
+              <li><a href="http://etl.ppp.uoa.gr/malt2/?twistedRectangle" id="ex2"> Στρεβλό τετράγωνο </a></li>
+              <li><a href="http://etl.ppp.uoa.gr/malt2/?torus"id="ex3"> Λουκουμάς </a></li>
+              <li><a href="http://etl.ppp.uoa.gr/malt2/?Ladder"id="ex4"> Σκάλα </a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+             <span style ="float:right; margin-right: 10px;"> Character:
+          <select style="font-size:90%; " id="charSel" onchange="changeCharacter(this.value);">
+            <option  value="Bird" selected>Bird</option>
+            <!-- <option value="Turtle">Turtle</option> -->
+            <option value="Plane">Plane</option>
+          </select>
+          </span>
+          <span style ="float:right; "> Background color:  <input type="color" id="bgcolor" style="width: 43px; height:15px;  " name="bgcolor" value="#A3D1FF" onchange="changeBGColor()"></span>
+
+         <span style ="float:right;">   Pen color:   <input type="color" id="pencolor" style="width: 43px; height:15px" name="pencolor" value="#FF0000" onchange="changePenColor(this.value)"></span>
+
+        </div>
+        <div id="inner" class="inner">
+          <canvas id="3Dcanvas" style = "width: 100%; height:100%;" > Your browser doesn't support canvas tags. Please upgrade to a recent version. </canvas>
+        <div id="cameraControls">
+          <input id="zoomIn" type="image" title="Zoom In" onClick="ZoomIn();" src = "icons/Zoom_in.png" value="Zoom In" style=" position:absolute;  width: 20px; height:20px; "/>
+          <input id = "zoomOut" type="image" title="Zoom Out" onClick="ZoomOut();" src = "icons/Zoom_out.png" value="Zoom Out" style = "width: 20px; height:20px;"/>
+          <input id="camera" type="image" src = "camera.gif" usemap="#cameramap" value="rotate camera" style = "width: 63px; height:63px; z-index:150; " />
+          <map name="cameramap" id="cameramap" title="Περιστροφή της κάμερας" style="z-index:150;">
+            <area shape="rect" coords="25%,0,60%,20%" onClick="rotateUp();" onMouseover="document.getElementById('camera').src='icons/up.png';" onMouseout="document.getElementById('camera').src='camera.gif';"  >
+            <area shape="rect" coords="25%,50%,70%,100%" onClick="rotateDown();" onMouseover="document.getElementById('camera').src='icons/down.png';" onMouseout="document.getElementById('camera').src='camera.gif';">
+            <area shape="rect" coords="0,10%,40%,60%" onClick="rotateLeft();" onMouseover="document.getElementById('camera').src='icons/left.png';" onMouseout="document.getElementById('camera').src='camera.gif';">
+            <area shape="rect" coords="50%,10%,100%,60%" onClick="rotateRight();"onMouseover="document.getElementById('camera').src='icons/right.png';" onMouseout="document.getElementById('camera').src='camera.gif';" >
+          </map>
+          </div>
+        </div>
+
+      </div>
+
+      <!--end of left-->
+        <div id="content">
+        <div id = "grabBar" class = "grabBar" >
+          <input id="runSelected" type="image" title = "Εκτέλεση των επιλεγμένων γραμμών κώδικα" onClick=" takeLines();" onmousedown = "src='icons/playClicked.png';"onmouseup="src='icons/play.png'"  src = "icons/play.png"  style="width:18px; height:18px;"alt="run Selected" />
+
+          <input id="stopTurtle" type="image" title = "Σταμάτημα της χελώνας" onClick="stop();" onmousedown = "src='icons/stopSelected.png';"onmouseup="src='icons/stop.png'"src = "icons/stop.png" alt = "stop" style="width:18px; height:18px;"/>
+          <input id="undo" type="image" title = "Αναίρεση τελευταίας εκτελεσμένης εντολής" onClick="undo();" onmousedown = "src='icons/undoSelected.png';"onmouseup="src='icons/undo.png'"src = "icons/undo.png"  style="width:18px; height:18px;" alt="undo" />
+                   <input id="runLine" type="image" title = "Εκτέλεση εντολών της τρέχουσας γραμμής" onClick="runLine();"onmousedown = "src='icons/playLineClick.png';"onmouseup="src='icons/playLine.png'" src = "icons/playLine.png"  style="width:18px; height:18px;" alt="runLine" />
+                    <input id= "save" style="width:20px; height:20px;float:right; padding-right: 10px;" type="image" title = "Aποθήκευση κώδικα σε αρχείο txt" onClick="appearSaveBox (1);" src = "icons/saveLogo.png" onmousedown = "src='icons/saveLogoClick.png';"onmouseup="src='icons/saveLogo.png'"  alt="Save" />
+                     <input id= "saveAll" style="width:18px; height:18px; float:right; padding-right: 5px;" type="image" title = "Aποθήκευση όλων" onClick="appearSaveBox (2);" onmousedown = "src='icons/saveClicked.png';"onmouseup="src='icons/Save.png'" src = "icons/Save.png"   alt="Save" />
+
+                     <div id="upload">
+            <input style ="cursor: pointer;" type="file" title = "Άνοιγμα αρχείου" id="files"/>
+         </div>
+
+        </div>
+        <div id = "codes" class = "codes">
+          <div id = "newcode">
+            <textarea  name="code" id="code" placeholder="Type your code here ..."></textarea>
+          </div>
+          <div id = "oldcode" class = "oldcode" >
+            <input id = "cleanCode" type="image" onClick="clean_oldcode();" value="clean messages" src="icons/Delete_Icon.png" style="width:7%;"/>
+          &nbsp; </div>
+        </div>
+      </div>
+      <!--end of content-->
+
+      <div id = "sliders_outer" >
+    <div id="grabBar" style="height: 8%;"class = "grabBar" > </div>
+        <div id = "sliders"  disabled="true"> &nbsp; </div>
+      </div>
+      <div id="twoDVT" class="twoDVT" >
+      <div id="grabBar" class = "grabBar" style="height:8%" >
+       <input id = "2dClean" type="image" title="Καθαρισμός"src = "icons/eraser1.png" onClick="resetTDCanvas();" value="clean" width="15px" height="15px"/>
+          <input id="grid" type="image" title="Εμφάνιση πλέγματος"src = "icons/grid.png" onClick="manageGrid();" value="appear Grid" width="15px" height="15px"/>
+          <input id = "points" type="image" title="Σημεία ελέγχου"src = "icons/points.png" onClick="managePoints();" value="appear Grid" width="15px" height="15px"/>
+        <span style="float:center"> 2D Variation Tool </span>
+
+
+          <input id ="minimize" type="image" title="Ελαχιστοποίηση"src = "icons/minimize.png" onClick="minimizeTDCanvas();" value="minmize" width="15px" height="15px" style="float:right;"/>
+          </div>
+        <canvas id="myCanvas" class = "myCanvas"> Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+
+
+    </div>
+</body>
+<script src="js/saveLoadFile.js" type="text/javascript"> </script>
+<!-- Codemirror Editor -->
+<script src="js/editor.js"  type="text/javascript"> </script>
+  <!-- 2D variation Tool functions -->
+<script src="js/2DVariationTool.js" type="text/javascript"></script>
+<script  src="js/elementsControls.js" type="text/javascript"> </script>
+
+</html>

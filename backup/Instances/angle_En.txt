@@ -1,0 +1,17 @@
+<!Logo Code!> to angle :x :y :theta
+pu right 90 back :x pd
+forward :x left 180-:theta forward :y
+end
+cg
+angle 50 60 80
+
+
+
+
+<!Scene State !>
+ functions: { angle 50 60 80 }
+cameraPos: {-7.105427357601002e-15 1.0810964129196884e-14 199.99999999999994}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {angle} values: {50,60,80,}min-max-step {25,100,1}min-max-step {30,120,1}min-max-step {40,160,1}<!Notes !>
+{}

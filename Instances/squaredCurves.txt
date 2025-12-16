@@ -1,0 +1,24 @@
+<!Logo Code!> 
+
+to sq :a
+repeat 4 [fd :a rt 90]
+rt 90 fd :a lt 90
+end
+
+to sqs :a :n :b
+repeat :n [sq :a rl :b]
+end
+
+cs
+sqs 30 1 0
+
+cs
+sq 40
+
+<!Scene State !>
+ functions: { sq 40 }
+cameraPos: {-7.105427357601002e-15 -1.7763568394002505e-15 200}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {sq} values: {40,}min-max-step {20,80,1}<!Notes !>
+{ }

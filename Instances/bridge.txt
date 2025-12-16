@@ -1,0 +1,27 @@
+<!Logo Code!> 
+to pylon
+repeat 2 [fd 20 rt 90 fd 10 rt 90]
+end
+
+to pylons :z :n
+penup bk :z rt 90 fd :n lt 90 pendown
+pylon
+penup lt 90 fd :n*2 rt 90 pendown
+pylon
+penup rt 90 fd 10 lt 90 fd 20 pendown
+end
+
+to mystery :a :b :c
+repeat :a [fd :b rt :c]
+end
+
+cg
+pylons 50 75
+mystery 40 4 4
+<!Scene State !>
+ functions: { pylons 50 75 mystery 40 4 4 }
+cameraPos: {7.105427357601002e-15 -1.2434497875801753e-14 200.00000000000006}
+character: {Bird}
+<!Sliders State !>
+#yes<!Notes !>
+{ }

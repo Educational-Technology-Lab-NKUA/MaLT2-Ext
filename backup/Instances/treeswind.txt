@@ -1,0 +1,24 @@
+<!Logo Code!> to tree :a :X :c
+if :a < 4 [stop]
+fd :a
+lt :X
+tree :a*2/3 :X :c
+rt 2*:X
+tree (:a*2/3)/:c :X :c
+lt :X
+bk :a
+end
+
+to wind :a :x :c
+penup bk 150 pendown
+tree :a :x :c
+end
+
+wind 30 40 2
+<!Scene State !>
+ functions: { wind 30 40 2 }
+cameraPos: {4.263256414560601e-14 -5.684341886080802e-14 199.99999999999972}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {wind} values: {30,40,1.5,}min-max-step {15,60,1}min-max-step {20,80,1}min-max-step {0.8,2,0.1}<!Notes !>
+{ }

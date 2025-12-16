@@ -1,0 +1,36 @@
+<!Logo Code!> 
+to diagonals :n :s
+repeat :n[
+draw_diagonals :n :s 2
+lt ((:n-3)*(180/:n))
+fd :s
+rt (360/:n)
+]
+end
+
+to draw_diagonals :n :s :k
+if :k>(:n-2) [stop]
+rt 180/:n
+fd length_diagonal :n :s :k
+bk length_diagonal :n :s :k
+draw_diagonals :n :s :k+1
+end
+
+to diameter :n :s
+output 2*((:s*sin (180*(:n-2)/(2*:n)))/sin (360/:n))
+end
+
+to length_diagonal :n :s :k
+output (diameter :n :s)*sin (180*:k/:n)
+end
+
+cs
+diagonals 4 60
+
+<!Scene State !>
+ functions: { diagonals 4 60 }
+cameraPos: {-9.592326932761353e-14 -7.105427357601002e-14 200.00000000000037}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {diagonals} values: {4,60,}min-max-step {2,8,1}min-max-step {30,120,1}<!Notes !>
+{ }

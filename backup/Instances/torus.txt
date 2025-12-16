@@ -1,0 +1,55 @@
+<!Logo Code!>   ;TORUS
+
+to step :r :n
+rt 360/:n fd :r*sqrt(2-2*cos(360/:n))
+end
+
+
+to circle :r
+penup fd :r  rt 85  pendown
+repeat 36 [step :r 36]
+penup lt 85 bk :r pendown
+end
+
+to torusa :r :d :n
+penup fd :d+:r pendown
+repeat :n [
+rr 90 circle :r rl 90
+penup rt 90-180/:n
+step :d+:r :n 
+lt 90-180/:n pendown]
+penup bk :d+:r pendown
+end
+
+to torusb :r :d :m :t :k
+if :k>:m [stop]
+make "radius :d+:r+:r*sin(:t+:k*360/:m)
+make "jump :r*cos(:t+:k*360/:m)
+penup up 90  fd :jump dn 90 pendown
+circle :radius
+  penup up 90 bk:jump dn 90 pendown
+torusb :r :d :m :t :k+1
+end
+
+to torus :r :d :n :m :t
+torusa :r :d :n
+torusb :r :d :m :t 0
+end
+;a completed torus (torusa and torusb combined)
+cg
+torus 20 30 50 16 120
+; torusa creates the equal circles 
+cg
+torusa 20 30 50 16 120
+; torusb creates the parallel circles
+cg
+torusb 20 30 16 120 0
+
+<!Scene State !>
+ functions: { torus 20 30 50 16 120 }
+cameraPos: {66.35183841073568 61.84952224298771 178.26547073919104}
+character: {Bird}
+<!Sliders State !>
+#no#
+<!Notes !>
+{ }

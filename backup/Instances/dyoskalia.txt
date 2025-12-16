@@ -1,0 +1,27 @@
+<!Logo Code!> to dyoskalia
+	κατω 90
+  repeat 2 [fd 20 rt 90 fd 40 rt 90]
+  fd 20
+  up 90
+  repeat 2 [fd 20 rt 90 fd 40 rt 90]
+  fd 20
+  dn 90
+  repeat 2 [fd 20 rt 90 fd 40 rt 90]
+  fd 20
+end
+
+θεσεπαχοσστυλο 4
+dyoskalia
+
+<!Scene State !>
+ functions: { penwidth 4 dyoskalia }
+cameraPos: {-197.10246698742108 67.29949628900951 -6.622374403035798}
+character: {Bird}
+<!Sliders State !>
+#no#
+<!Notes !>
+{ Θα μπορούσες κι εσύ να βελτιώσεις τον επόμενο κώδικα στο MaLT ώστε:
+Α)  Η σκάλα που βλέπεις στην παρακάτω εικόνα να μην έχει 2 αλλά 7 σκαλιά, όπως η σκάλα στο Grand Baori; 
+Β)  Να κατασκευάσεις μια διπλή σκάλα, όπως στο Grand Baori; 
+Γ)  Να μπορείς να ορίζεις κάθε φορά διαφορετικό αριθμό σκαλοπατιών στη σκάλα σου; 
+}

@@ -1,0 +1,54 @@
+
+
+span.cm-logo-operator {
+  color:#909;
+  font-weight: bold;
+}
+
+span.cm-logo-variable {
+  color:#03F;
+  font-style: italic;
+}
+
+
+span.cm-logo-name {
+  color: black;
+
+}
+span.cm-logo-primitive {
+  color:#930093;
+  font-weight: bold;
+}
+
+span.cm-logo-comment {
+  color: #cc00ff;
+  font-style: italic;
+}
+
+span.cm-logo-to {
+ color:#393;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+span.cm-logo-end {
+  color:#393;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+span.cm-logo-funct-name {
+  color: #3f0000;
+  font-weight: bold;
+}
+
+span.cm-logo-funct-vars {
+  color:#03F;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+

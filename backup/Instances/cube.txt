@@ -1,0 +1,26 @@
+<!Logo Code!> To square  :x
+  repeat 4 [
+  	forward :x 
+  	right 90]
+END
+
+TO cube :x
+  repeat 4[
+    square :x 
+  	forward :x 
+  	down 90 ]
+end 
+
+cg
+cube 60
+
+
+
+<!Scene State !>
+ functions: { cube 60 }
+cameraPos: {117.38915864478774 168.404460316615 132.78412211295407}
+character: {Bird}
+<!Sliders State !>
+#no#
+<!Notes !>
+{ }

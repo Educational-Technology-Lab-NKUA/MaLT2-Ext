@@ -1,0 +1,22 @@
+<!Logo Code!>  to step
+  setpensize 5
+  up 90 fd 10 dn 90
+  rt 90 fd 70 bk 70 lt 18 lt 90
+end
+cg 
+to skala
+dn 90
+repeat 21 [step]
+end
+
+skala
+
+
+<!Scene State !>
+ functions: { skala }
+cameraPos: {-270.6571842024811 353.58163073337886 179.77458107416916}
+character: {Bird}
+<!Sliders State !>
+#no#
+<!Notes !>
+{ }

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Slider - Multiple sliders</title>
+	<link rel="stylesheet" href="../../themes/base/jquery.ui.all.css">
+	<script src="../../jquery-1.10.2.js"></script>
+	<script src="../../ui/jquery.ui.core.js"></script>
+	<script src="../../ui/jquery.ui.widget.js"></script>
+	<script src="../../ui/jquery.ui.mouse.js"></script>
+	<script src="../../ui/jquery.ui.slider.js"></script>
+	
+	<style>
+	#eq span {
+		height:120px; float:left; margin:15px
+	}
+	</style>
+	    <script>
+function createSliders (number) {
+		divid = document.getElementById("eq");
+		for (i=0; i<number; i++) {
+			var newspan = document.createElement('span');
+  			var spanIdName = i +'span';
+			newspan.setAttribute('id',spanIdName);
+		
+			newspan.innerHTML =  'Element Number '+i+' has been added!'
+			divid.appendChild(newspan);
+
+			}
+			$( "#master" ).slider({
+			value: 60,
+			orientation: "horizontal",
+			range: "min",
+			animate: true
+		});
+		$( "#eq > span" ).each(function() {
+			// read initial values from markup and remove that
+			//var value = parseInt( $( this ).text(), 10 );
+			$( this ).slider({
+				value: 60,
+			orientation: "vertical",
+			range: "min",
+			animate: true
+			});
+		});
+		
+		};
+</script>
+</head>
+
+<body>
+      <input type="button" onClick="createSliders(4);" value="slide" />
+      <div id="master" style="width:260px; margin:15px;"></div>
+<div id="eq"> </div>
+
+
+</body>
+</html>

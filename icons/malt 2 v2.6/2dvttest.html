@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+ <script>
+ var oldx,oldy=null;
+ var points =[];
+var isDrag = false;
+var mx, my; // mouse coordinates
+var mySel;
+var mySelColor = '#CC0000';
+var tdcanvas  = document.getElementById("myCanvas");
+ tdcanvas.addEventListener("mousedown", mouseDownListener, false);
+  tdcanvas.addEventListener("mouseup", mouseUpListener, false);
+  var ctx = tdcanvas.getContext("2d");
+ // ctx.translate(0 ,tdcanvas.height);
+  //ctx.scale(1, -1);
+ function mouseDownListener(event) {
+	 	
+	event.preventDefault();
+
+
+	var bRect = tdcanvas.getBoundingClientRect();
+		mx = (event.clientX - bRect.left)*(tdcanvas.width/bRect.width);
+		my = (event.clientY - bRect.top)*(tdcanvas.height/bRect.height);
+		//console.log (mx, my);
+		if(!testHit (mx,my)){
+			
+		//add a new point
+		
+		ctx.beginPath();
+    	ctx.moveTo(oldx,oldy);
+		ctx.lineTo(mx,my);
+		ctx.stroke();
+		ctx.fillStyle = "#FF0000";
+		ctx.fillRect(mx,my,4,4);
+		newpoint = {curX: mx, curY: my}
+		
+		points.push (newpoint);
+		oldx=mx;
+		oldy=my;
+		calculateSliderValue(mx, my);
+		}
+		else { 	//click on a point
+		if (isDrag) {
+			tdcanvas.addEventListener("mousemove", mouseMoveListener, false);
+		}
+		
+		
+			  
+			
+			}
+	
+ }
+ function mouseMoveListener(evt) {
+		var posX;
+		var posY;
+		var minX = 10;
+		var maxX = tdcanvas.width - 10;
+		var minY = 10;
+		var maxY = tdcanvas.height - 10;
+		//getting mouse position correctly 
+		var bRect = tdcanvas.getBoundingClientRect();
+		mouseX = (evt.clientX - bRect.left)*(tdcanvas.width/bRect.width);
+		mouseY = (evt.clientY - bRect.top)*(tdcanvas.height/bRect.height);
+		
+		//clamp x and y positions to prevent object from dragging outside of canvas
+		posX = mouseX - dragHoldX;
+		posX = (posX < minX) ? minX : ((posX > maxX) ? maxX : posX);
+		posY = mouseY - dragHoldY;
+		posY = (posY < minY) ? minY : ((posY > maxY) ? maxY : posY);
+		
+		points[dragIndex].curX = posX;
+		points[dragIndex].curY = posY;
+		
+		redrawShapes();
+	}
+	
+	
+ function mouseUpListener(evt) {
+		
+			isDrag = false;
+			tdcanvas.removeEventListener("mousemove", mouseMoveListener, false);
+		
+	}
+ function testHit (mouseX, mouseY) {
+	 //console.log (mouseX , mouseY);
+	 
+	 for (i=0;i <points.length; i++){
+		  
+		 maxX = points[i].curX + 10;
+		 maxY = points[i].curY + 10;
+		
+		 if((mouseX<maxX)&&(mouseX>points[i].curX) && (mouseY<maxY) &&(mouseY>points[i].curY)){
+			dragHoldX = mouseX - points[i].curX;
+			dragHoldY = mouseY - points[i].curY;
+			 isDrag = true;
+			 dragIndex = i;
+			 return true;
+			 
+			 }
+		 
+		 }
+		 return false;
+	 
+	 }
+function redrawShapes () {
+	var ctx = tdcanvas.getContext("2d");
+	ctx.fillStyle = "#ffffff";
+		ctx.fillRect(0,0,tdcanvas.width,tdcanvas.height);
+	
+	for (i=0;i<points.length; i ++ ) {
+		
+		nx = points[i].curX;
+		ny = points[i].curY;
+		ctx.beginPath();
+    	if (i!=0){
+			ctx.moveTo(oldx,oldy);
+		ctx.lineTo(nx,ny);
+		ctx.stroke();
+			}
+		ctx.fillStyle = "#FF0000";
+		ctx.fillRect(nx,ny,10,10);
+		oldx=nx;
+		oldy=ny;
+		
+		}
+	
+	}
+function calculateSliderValue (canvasX, canvasY){
+	sliderStep = 5;
+	sliderMin = -10;
+	sliderMax = 50;
+	sliderSlots = Math.floor((sliderMax - sliderMin) / sliderStep);
+	canvasStep =  tdcanvas.height/sliderSlots;
+	actualY = tdcanvas.height-canvasY;
+	tempY = Math.floor(actualY/canvasStep);
+	sliderValue = sliderMin + tempY*sliderStep;
+	console.log ("sliderSlots: " + sliderSlots + "sliderValue: " + sliderValue);
+	
+	
+	}
+</script>
+</body>
+</html>

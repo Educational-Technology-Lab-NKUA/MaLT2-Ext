@@ -1,0 +1,23 @@
+﻿<!Logo Code!>  Το στρεβλό τετράπλευρο
+
+Για μονάδα :length :theta :wmega
+πίσω :length/2 μπροστα :length δεξια 90+:theta/2
+πανω :wmega  μπροστα :length*sin(:theta/2)/cos(:wmega)
+κατω :wmega δεξια 90+(:theta)/2
+μπροστα :length αριστερα 90+(:theta)/2
+κατω :wmega μπροστα :length*sin(:theta/2)/cos(:wmega)
+πανω :wmega αριστερα 90+:theta/2
+μπροστα :length πισω :length/2
+τελος
+
+σβγ
+μονάδα 50 45 60
+
+
+<!Scene State !>
+ functions: { μονάδα 50 45 60 }
+cameraPos: {0 1.1666661452905888e-14 200}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {μονάδα} values: {50,45,60,}min-max-step {25,100,1}min-max-step {22,90,1}min-max-step {30,120,1}<!Notes !>
+{Το στρεβλό τετράπλευρο}

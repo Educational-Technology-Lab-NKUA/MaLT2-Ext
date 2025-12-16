@@ -1,0 +1,57 @@
+﻿<!Logo Code!>   DNA Model1
+
+to monada :length :theta :wmega
+bk :length/2 fd :length rt 90+:theta/2
+up :wmega fd :length*sin:theta/(2*cos :wmega*sin(90-:theta/2))
+down :wmega  rt 90+:theta/2 
+fd :length  lt 90+:theta/2 
+down :wmega  fd :length*sin:theta/(2*cos :wmega*sin(90-:theta/2)) 
+up :wmega  lt 90+:theta/2 
+fd :length rt 90+:theta/2 
+up :wmega fd :length*sin :theta/(2*cos:wmega *sin(90-:theta/2))
+down :wmega rt 90+:theta/2
+fd :length/2 rt 180 
+end
+
+to DNA :n :length :theta :wmega
+repeat :n [monada :length :theta :wmega ]
+end
+
+cg
+dn 90
+
+DNA 20 40 18 50
+
+cg
+DNA2 Model2
+
+to monadanew :length :theta :height
+make "wmega arctan(:height/(:length*sin(:theta/2)))
+bk :length/2 fd :length  rt 90+:theta/2 
+up :wmega  fd :length*sin(:theta)/(2*cos(:wmega)*sin(90-:theta/2)) 
+dn :wmega rt 90+(:theta)/2 
+fd :length lt 90+(:theta)/2 
+dn :wmega fd :length*sin(:theta)/(2*cos(:wmega)*sin(90-:theta/2)) 
+up :wmega lt 90+:theta/2
+fd :length bk :length/2
+penup
+up 90  fd :height  dn 90 
+pendown
+rt :theta
+end
+
+to dnanew :n :length :theta :height
+repeat :n [monadanew :length :theta :height ]
+end
+
+dnanew 5 40 45 6
+
+
+
+<!Scene State !>
+ functions: { down 90 dna 20 40 18 50 }
+cameraPos: {123.29682510662025 199.82604677437308 184.4784140035196}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {1} fname: {dna} values: {17,50,16,50,}min-max-step {10,40,1}min-max-step {20,80,1}min-max-step {9,36,1}min-max-step {25,100,1}<!Notes !>
+{DNA INSTANCE}

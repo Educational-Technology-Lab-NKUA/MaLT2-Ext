@@ -1,0 +1,35 @@
+<!Logo Code!>   ;John with his friends are trying to make a dihedral angle that it will open and close. As you can see in the scene they didn't make it. Can you help them? 
+;-----------------------------------
+
+To dihedral :x :theta :f :wmega
+left 90 forward :x right 90 forward :x
+right 90 forward :x right 90 forward :x
+left :f up :theta roll_right :wmega 
+forward :x left 90 forward :x left 90
+forward :x left 90 forward :x
+end
+cg 
+dihedral 50 120 80 70
+
+
+
+
+
+
+
+<!Scene State !>
+ functions: { dihedral 50 120 80 70 }
+cameraPos: {0.6397939044655931 -1.7763568394002505e-14 199.97132551230607}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {dihedral} values: {50,120,80,70,}min-max-step {25,100,1}min-max-step {60,240,1}min-max-step {40,160,1}min-max-step {35,140,1}<!Notes !>
+{Για διεδρηγωνια :χ :θ
+αριστερα 90 μπροστα :χ δεξια 90 μπροστα :χ δεξια 90 μπροστα :χ δεξια 90 μπροστα :χ
+
+αριστερα 90 πανω :θ
+
+μπροστα :χ αριστερα 90 μπροστα :χ αριστερα 90 μπροστα :χ αριστερα 90 μπροστά :χ
+τελος
+
+σβγ
+διεδρηγωνια 50 120}

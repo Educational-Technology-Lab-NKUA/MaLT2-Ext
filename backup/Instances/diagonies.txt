@@ -1,0 +1,37 @@
+<!Logo Code!> ;ΔΙΑΓΩΝΙΕΣ ΔΥΝΑΜΙΚΟΥ ΠΟΛΥΓΩΝΟΥ
+
+σβγ
+διαγωνιες 4 60
+
+to διαγωνιες :n :s 
+repeat :n[
+draw_diagwnies :n :s 2
+α ((:n-3)*(180/:n))
+μ :s
+δ (360/:n)
+]
+end
+
+to draw_diagwnies :n :s :κ
+if :κ>(:n-2) [stop]
+δ 180/:n
+μ mikos_diagoniou :n :s :κ 
+π mikos_diagoniou :n :s :κ 
+draw_diagwnies :n :s :κ+1
+end
+
+to diametros :n :s
+output 2*((:s*sin (180*(:n-2)/(2*:n)))/sin (360/:n))
+end
+
+to mikos_diagoniou :n :s :κ
+output (diametros :n :s)*sin (180*:κ/:n)
+end
+
+<!Scene State !>
+ functions: { διαγωνιες 4 60 }
+cameraPos: {77.62716642735938 66.55415969069858 179.4536467893243}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {διαγωνιες} values: {4,55,}min-max-step {2,8,1}min-max-step {30,120,1}<!Notes !>
+{ }

@@ -1,0 +1,20 @@
+<!Logo Code!>  to pent :a
+  repeat 5 [fd :a rt 72]
+  end
+
+to wing :a :n :b :c :d
+  if  :n < 1 [stop]
+  pent :a rt :b rr :c up :d
+  wing :a*0.75 :n-1 :b :c :d
+ end
+
+cg
+wing 100 10 180 180 180
+
+<!Scene State !>
+ functions: { wing 100 10 180 180 180 }
+cameraPos: {-1.3672347540178862 -0.993354187729981 210.52631578947367}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {wing} values: {100,10,180,180,180,}min-max-step {50,200,1}min-max-step {5,20,1}min-max-step {90,360,1}min-max-step {90,360,1}min-max-step {90,360,1}<!Notes !>
+{ }

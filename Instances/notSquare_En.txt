@@ -1,0 +1,40 @@
+<!Logo Code!>     ;John with his friends tried to program the procedure "rectangle" in a way that the sparow draws a rectagle but not a square. After that they observed that the shape in some cases was wrong and they were not able to create what they wanted. Can you help them?
+;----------------------------------------------
+
+To rectangle :x :y
+forward :x
+right 90
+forward :y
+right 90
+forward :y
+right 90
+forward :x
+right 90
+End
+cg 
+rectangle 80 70
+
+
+
+
+
+
+<!Scene State !>
+ functions: { rectangle 80 70 }
+cameraPos: {0 -3.552713678800501e-14 200}
+character: {Bird}
+<!Sliders State !>
+#yes<!Notes !>
+{για παραλληλόγραμμο :χ
+μπροστα :χ
+δεξια 90
+μπροστα :χ+40
+δεξια 90
+μπροστα :χ
+δεξια 90
+μπροστα :χ+40
+δεξια 90
+τέλος
+
+σβγ
+παραλληλόγραμμο 80}

@@ -1,0 +1,58 @@
+﻿<!Logo Code!>  
+to square:x 
+forward :x left 90 
+forward :x left 90 
+forward :x left 90 
+forward :x left 90 
+τελος 
+
+to movetocenter :x
+  left 45 pu
+  forward :x*(sqrt(2))/2
+  right 45 pd
+  τελος
+
+to pyramid :x :w
+  square :x
+  movetocenter :x
+  up 90
+  pu
+  forward (:x*(sqrt(2))/2)*tan(:w)
+  pd
+  down 90
+  right 45
+  down 180-:w
+  forward (:x*(sqrt(2))/2)/cos(:w)
+  back (:x*(sqrt(2))/2)/cos(:w)
+  up 180-:w
+  right 90
+  down 180-:w
+  forward (:x*(sqrt(2))/2)/cos(:w)
+  back (:x*(sqrt(2))/2)/cos(:w)
+  up 180-:w
+  right 90
+  down 180-:w
+  forward (:x*(sqrt(2))/2)/cos(:w)
+  back (:x*(sqrt(2))/2)/cos(:w)
+  up 180-:w
+  right 90
+  down 180-:w
+  forward (:x*(sqrt(2))/2)/cos(:w)
+  back (:x*(sqrt(2))/2)/cos(:w)
+  up 180-:w
+    end 
+
+down 90
+rt 180
+
+cg
+pyramid 100 30
+
+
+<!Scene State !>
+ functions: { down 90 right 180 pyramid 100 30 }
+cameraPos: {166.65610109747448 149.28113414863776 203.2979389412659}
+character: {Plane}
+<!Sliders State !>
+#yes#fid: {2} fname: {pyramid} values: {93,42,}min-max-step {50,200,1}min-max-step {15,60,1}<!Notes !>
+{ }

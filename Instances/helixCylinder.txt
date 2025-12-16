@@ -1,0 +1,47 @@
+<!Logo Code!> to helix1 :n :dx :s :k
+setpensize 2
+repeat :n [rl:s lt:k fd :dx]
+end
+cg
+helix1 22 5 5 25
+
+to helix2 :n :dx
+repeat :n [rl 0.5*:dx lt 5*:dx fd :dx]
+end
+cg
+helix2 55 5
+
+to cylinder :a :b :c
+setpensize 2
+setpencolor [:a :b :c]
+fd 16 pu bk 16 dn 90
+fd 2 rt 90 pd
+end
+cg
+cylinder 0 0 8
+
+
+to helix :n :dx
+cylinder 200 125 0
+setpensize 0.2 setpencolor [8 0 0]
+up 33
+repeat :n [rr 13*:dx rt 20.4*:dx fd :dx]
+end
+
+cg
+helix 260 0.1
+
+to helix1s :n :dx :s :k
+setpensize 2
+repeat :n [rl:s lt:k fd :dx]
+end
+
+cg
+helix1s 260 5 5 25
+<!Scene State !>
+ functions: { helix 260 0.1 }
+cameraPos: {-53.83785949162695 30.265665082341954 34.574732603174745}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {helix} values: {249,0.1,}min-max-step {130,520,1}min-max-step {0,2,0.1}<!Notes !>
+{ }

@@ -1,0 +1,67 @@
+<!Logo Code!>    to moveup :x :y :h :l
+up arctan((2*:h)/(sqrt(:x*:x+:y*:y)*(1-(:l/100))))
+forward :h/sin(arctan((2*:h)/(sqrt(:x*:x +:y*:y)*(1-(:l/100)))))
+down arctan((2*:h)/(sqrt(:x*:x+:y*:y)*(1-(:l/100))))
+end
+
+to movedown :x :y :h :l
+up arctan((2*:h)/(sqrt(:x*:x+:y*:y)*(1-(:l/100))))
+back :h/sin(arctan((2*:h)/(sqrt(:x*:x+:y*:y)*(1-(:l/100)))))
+down arctan((2*:h)/(sqrt(:x*:x+:y*:y)*(1-(:l/100))))
+end
+
+to base :x :y
+repeat 2 [forward :x rt 90 forward :y rt 90]
+end
+
+to piece :x :y :h :l
+down 90
+base :x :y 
+penup 
+repeat 2 [forward :x
+right 90
+right 90-arctan(:y/:x)
+pendown
+moveup :x :y :h :l
+penup
+movedown :x :y :h :l
+left 90-arctan(:y/:x)
+forward :y right 90
+right arctan(:y/:x)
+pendown
+moveup :x :y :h :l
+penup
+movedown :x :y :h :l
+left arctan(:y/:x) pendown]
+penup
+right arctan(:y/:x)
+moveup :x :y :h :l
+left arctan(:y/:x)
+pendown
+base (:l/100)*:x (:l/100)*:y
+up 90
+end
+
+to chimney :x :y :h :l :m
+repeat :m [piece :x :y :h :l :m make "x ((:l/100)*:x) make "y ((:l/100)*:y) make "h ((:l/100)*:h)]
+end
+
+to  chimney2 :width :r :g :b
+setpensize :width
+setpencolor [:r :g :b]
+make "x 20 make "y 30 make "h 20 make "l 90
+repeat 10 [piece :x :y :h :l make "x ((:l/100)*:x) make "y ((:l/100)*:y) make "h ((:l/100)*:h)]
+end
+
+chimney 20 30 20 90 10
+cg
+chimney2 2 255 0 0
+
+
+<!Scene State !>
+ functions: { chimney 20 30 20 90 10 }
+cameraPos: {64.96738581816527 175.7537051557909 182.29078541433935}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {chimney} values: {20,30,20,90,10,}min-max-step {10,40,1}min-max-step {15,60,1}min-max-step {10,40,1}min-max-step {45,180,1}min-max-step {5,20,1}<!Notes !>
+{ }

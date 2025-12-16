@@ -1,0 +1,51 @@
+<!Logo Code!>  ;TORUS
+
+to step :r :n
+rt 360/:n fd :r*sqrt(2-2*cos(360/:n))
+end
+
+
+to kyclos :r
+penup fd :r  rt 85  pendown
+repeat 36 [step :r 36]
+penup lt 85 bk :r pendown
+end
+
+to loukoumasa :r :d :n
+penup fd :d+:r pendown
+repeat :n [
+rr 90 kyclos :r rl 90
+penup rt 90-180/:n
+step :d+:r :n 
+lt 90-180/:n pendown]
+penup bk :d+:r pendown
+end
+
+to loukoumasb :r :d :m :t :k
+if :k>:m [stop]
+make "radius :d+:r+:r*sin(:t+:k*360/:m)
+make "jump :r*cos(:t+:k*360/:m)
+penup up 90  fd :jump dn 90 pendown
+kyclos :radius
+  penup up 90 bk:jump dn 90 pendown
+loukoumasb :r :d :m :t :k+1
+end
+
+to loukoumas :r :d :n :m :t
+loukoumasa :r :d :n
+loukoumasb :r :d :m :t 0
+end
+;συνολικός λουκουμας
+loukoumas 20 30 50 16 120
+; στο loukoumasa φαινονται οι ίσοι κύκλοι, 
+loukoumasa 20 30 50 16 120
+; στο loukoumasb φαινονται οι παραλληλοι κύκλοι 
+loukoumasb 20 30 16 120 0
+<!Scene State !>
+ functions: { loukoumas 20 30 50 16 120 }
+cameraPos: {84.39630043050465 102.48500274520599 149.6300512264422}
+character: {Bird}
+<!Sliders State !>
+#no#
+<!Notes !>
+{ }

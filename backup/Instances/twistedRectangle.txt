@@ -1,0 +1,22 @@
+<!Logo Code!> The twisted renctangle
+
+to unitck :length :theta :wmega
+bk :length/2 fd :length rt 90+:theta/2
+up :wmega  fd :length*sin(:theta/2)/cos(:wmega)
+dn :wmega rt 90+(:theta)/2
+fd :length lt 90+(:theta)/2
+dn :wmega fd :length*sin(:theta/2)/cos(:wmega)
+up :wmega lt 90+:theta/2
+fd :length bk :length/2
+end
+
+cg
+unitck 50 45 60
+
+<!Scene State !>
+ functions: { unitck 50 45 60 }
+cameraPos: {130.46295572504064 113.05084339663495 283.2542324792751}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {unitck} values: {74,51,60,}min-max-step {25,100,1}min-max-step {22,90,1}min-max-step {30,120,1}<!Notes !>
+{ The twisted rectangle}

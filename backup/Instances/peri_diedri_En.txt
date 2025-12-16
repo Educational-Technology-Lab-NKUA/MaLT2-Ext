@@ -1,0 +1,16 @@
+<!Logo Code!>  to shape :x :theta
+forward :x right :theta forward :x right :theta forward :x right :theta forward :x up :theta forward :x right :theta forward :x right :theta forward :x up :theta 
+end
+
+
+
+cs
+shape 50 45
+
+<!Scene State !>
+ functions: { shape 50 45 }
+cameraPos: {-12.261355318341522 -16.174469430110392 238.59627571105844}
+character: {Bird}
+<!Sliders State !>
+#yes#fid: {0} fname: {shape} values: {40,25,}min-max-step {25,100,1}min-max-step {22,90,1}<!Notes !>
+{ }
